@@ -282,3 +282,188 @@ números y el índice que le corresponde en el array
     }
 
 ------------------------------------------------------------
+
+Práctica 9: Crear un programa que guarde en un array 10 números aleatorios entre 1 y 99
+que sean pares, no repetidos. Luego mostrar en pantalla los 10 números, así como el máximo y el mínimo
+de esos 10 números y las respectivas posiciones que ocupan en el array
+
+    public static void main(String[] args) {
+
+        int array[] = new int[10];
+
+        int min = 1;
+        int max = 99;
+
+        for (int i = 0; i < array.length; i++) {
+            int numAleat = (int) (Math.random() * (max - min + 1)) + min;
+
+            if (numAleat % 2 == 0) {
+                boolean exists = false;
+                for (int j = 0; j < i; j++) {
+                    if (numAleat == array[j]) {
+                        exists = true;
+                        break;
+                    }
+                }
+
+                if (!exists) {
+                    array[i] = numAleat;
+                } else {
+                    i--; 
+                }
+            } else {
+                i--;
+            }
+        }
+
+        for(int i = 0; i < array.length; i++){
+            System.out.println(array[i]);
+        }
+
+        int minValor = array[0];
+        int maxValor = array[0];
+        int minPosi = 0;
+        int maxPosi = 0;
+
+        for(int i = 0; i < array.length; i++){
+            if(array[i] <= minValor){
+                minValor = array[i];
+                minPosi = i;
+            }   
+            else if(array[i] >= maxValor){
+                maxValor = array[i];
+                maxPosi = i;
+            }
+
+        }
+
+        System.out.println("Valor menor = " + minValor + " en la prosicion " + minPosi + "\nValor mayor = " + maxValor + " en la posicion " + maxPosi);
+    }
+
+-----------------------------------------------------------
+
+Práctica 10: Hacer un programa que primero solicita la cantidad de números que se van a
+inroducir. Después de haberlos introducido muestra la media y los números que se han
+introducido
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Indica la cantidad de numero");
+        int cantidad = sc.nextInt();
+
+        int array[] = new int[cantidad];
+
+        int min = 1;
+        int max = 99;
+
+        for(int i = 0; i < array.length; i++){
+            int numAleat = (int) (Math.random() * (max - min + 1)) + min;
+
+            array[i] = numAleat;
+        }
+
+        int total = 0;
+
+        for(int i = 0; i < array.length; i++){
+            total += array[i];
+            System.out.println(array[i]);
+        }
+
+        int media = total / cantidad;
+
+        System.out.println("La media es: " + media);
+
+        sc.close();
+        
+    }
+
+------------------------------------------------------------
+
+Práctica 11: Modificar el programa anterior para que calcule también la varianza
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        DecimalFormat df = new DecimalFormat("#.##");
+
+        System.out.println("Indica la cantidad de numero");
+        int cantidad = sc.nextInt();
+
+        int array[] = new int[cantidad];
+
+        int min = 1;
+        int max = 99;
+
+        for(int i = 0; i < array.length; i++){
+            int numAleat = (int) (Math.random() * (max - min + 1)) + min;
+
+            array[i] = numAleat;
+        }
+
+        int total = 0;
+
+        for(int i = 0; i < array.length; i++){
+            total += array[i];
+            System.out.println(array[i]);
+        }
+
+        double media = (double) total / cantidad;
+        System.out.println("La media es: " + df.format(media));
+
+        double sumaDiferenciasCuadradas = 0;
+        for (int i = 0; i < array.length; i++) {
+            sumaDiferenciasCuadradas += Math.pow(array[i] - media, 2);
+        }
+
+        double varianza = sumaDiferenciasCuadradas / cantidad;
+        System.out.println("La varianza es: " + df.format(varianza));
+
+        sc.close();
+        
+    }
+
+---------------------------------------------------
+
+Práctica 12: Crear un programa que genere 20 números aleatorios enteros entre 1 y 100.
+Este array una vez se hay rellenado no se puede modificar. Crear un segundo array donde se
+almacenará una copia de los 5 números más pequeños del primer array. Mostrar en pantalla
+el contenido del array de 20 números y mostrar cuáles son los 5 números más pequeños
+
+    public static void main(String[] args) {
+
+        int array[] = new int[20];
+
+        int min = 1;
+        int max = 100;
+
+        for(int i = 0; i < array.length; i++){
+            int numAleat = (int) (Math.random() * (max - min + 1)) + min;
+            array[i] = numAleat;
+        }
+
+        int arrayCopia[] =  new int[20];
+
+        System.out.println("Array de 20: ");
+        for(int i = 0; i < array.length; i++){
+            arrayCopia[i] = array[i];
+            System.out.println(array[i]);
+        }
+
+        Arrays.sort(arrayCopia);
+
+        int arrayMin[] =  new int[5];
+        for(int i = 0; i < 5; i++){
+            arrayMin[i] = arrayCopia[i];
+        }
+
+        System.out.println("\nArray de 5:");
+        for(int i = 0; i < arrayMin.length; i++){
+            System.out.println(arrayMin[i]);
+        }
+        
+    }
+
+-----------------------------------------------------------------------
+
