@@ -467,3 +467,72 @@ el contenido del array de 20 números y mostrar cuáles son los 5 números más 
 
 -----------------------------------------------------------------------
 
+Práctica 13: Crear una variante del programa anterior que en lugar de guardar una copia de
+los números más pequeños guarde la posición en la que están esos números. 
+
+    public static void main(String[] args) {
+
+        int array[] = new int[20];
+
+        int min = 1;
+        int max = 100;
+
+        for(int i = 0; i < array.length; i++){
+            int numAleat = (int) (Math.random() * (max - min + 1)) + min;
+            array[i] = numAleat;
+        }
+
+        int arrayCopia[] =  new int[20];
+
+        System.out.println("Array de 20: ");
+        for(int i = 0; i < array.length; i++){
+            arrayCopia[i] = array[i];
+            System.out.println(array[i]);
+        }
+
+        Arrays.sort(arrayCopia);
+        int posicion[] = new int[5];
+
+        int arrayMin[] =  new int[5];
+        for(int i = 0; i < 5; i++){
+            arrayMin[i] = arrayCopia[i];
+            posicion[i] = i;
+        }
+
+        System.out.println("\nArray de 5:");
+        for(int i = 0; i < arrayMin.length; i++){
+            System.out.println(arrayMin[i] + " posicion " + posicion[i]);
+        }
+        
+    }
+
+---------------------------------------------------------
+
+Práctica 14: Crear un programa que introduzca 10 números por teclado y mostrarlos
+ordenados de menor a mayor al finalizar
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        int array[] = new int[10];  
+
+        for(int i = 0; i < array.length; i++){
+
+            System.out.println("Ingresa un numero");
+            int num = sc.nextInt();
+
+            array[i] = num;
+        }
+
+        Arrays.sort(array);
+
+        for(int i = 0; i < array.length; i++){
+            System.out.println(array[i]);
+        }
+        
+        sc.close();
+    }
+
+------------------------------------------------------------
+
