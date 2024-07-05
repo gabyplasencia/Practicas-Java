@@ -536,3 +536,47 @@ ordenados de menor a mayor al finalizar
 
 ------------------------------------------------------------
 
+Práctica 15: Crear un programa que muestre al azar una carta de la baraja española. Por ej.
+“sota de copas” Para ello se usarán dos array 
+En el primero se registra: 
+1,2,3,4,5,6,7,sota,caballo,rey
+En el segundo
+oros,copas,bastos,espadas
+Mediante dos aleatorios se toma un dato del primer array y un dato del segundo array para 
+componer el nombre de la carta a mostrar
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        String numero[] = {"1", "2", "3", "4", "5", "6", "7", "sota", "caballo", "rey"};
+        String grupo[] = {"oros", "copas", "bastos", "espadas"};
+
+        int min = 0;
+        int maxN = 9;
+        int maxG = 3;
+
+        boolean salir = false;
+
+        do{
+            int numCarta = (int) (Math.random() * (maxN - min + 1)) + min;
+            int grupoCarta = (int) (Math.random() * (maxG - min + 1)) + min;
+
+            System.out.println("CARTA: "+ numero[numCarta] + " de " + grupo[grupoCarta]);
+            System.out.println("Mostrar otra carta?");
+            char letra = sc.next().charAt(0);
+            letra = Character.toLowerCase(letra);
+
+            if(letra != 'n'){
+                salir = false;
+            }else {
+                salir = true;
+            }
+
+        }while(salir != true);
+
+        sc.close();
+    }
+
+----------------------------------------------------------
+
