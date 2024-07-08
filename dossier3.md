@@ -580,3 +580,171 @@ componer el nombre de la carta a mostrar
 
 ----------------------------------------------------------
 
+Práctica 16: Crear un programa que genere 10 números aleatorios enteros entre 1 y 100. Se
+deben mostrar esos 10 números, la media de esos 10 números y decir cuáles de esos 10 
+números son mayores que la media calculada.
+
+    public static void main(String[] args) {
+
+        int cantidad = 10;
+        int array[] = new int[cantidad];
+
+        int min = 1;
+        int max = 100;
+
+        for(int i = 0; i < array.length; i++){
+            int numAleat = (int) (Math.random() * (max - min + 1)) + min;
+            array[i] = numAleat;
+        }
+
+        int total = 0;
+
+        System.out.println("Valores del array: ");
+        for(int i = 0; i < array.length; i++){
+            System.out.println(array[i]);
+            total += array[i];
+        }
+        System.out.println("------------------------------\n");
+
+        int media = total / cantidad;
+
+        for(int i = 0; i < array.length; i++){
+            if(array[i] > media){
+                System.out.println("El " + array[i] + " en la posicion " + i + " es mayor que la media de " + media);
+            }else{
+                continue;
+            }
+        }
+
+    }
+
+------------------------------------------------------------
+
+Práctica 17: Crear un programa que reproduzca el algoritmo anterior
+(ordenar el array sin usar sort, solo comparando i con el siguiente)
+
+    public static void main(String[] args) {
+
+        int array[] = new int[10];
+
+        int min = 1;
+        int max = 30;
+
+        for(int i = 0; i < array.length; i++){
+            int numAleat = (int) (Math.random() * (max - min + 1)) + min;
+            array[i] = numAleat;
+        }
+
+        System.out.println("Array sin ordenar:");
+        for(int i = 0; i < array.length; i++){
+            System.out.println(array[i]);
+        }
+
+        for(int i = 0; i < array.length; i++){
+            System.out.println(i);
+            int iNext = i + 1;
+            int element1;
+            int element2;
+
+            if(array[i] > array[iNext]){
+                element1 = array[i];
+                element2 = array[iNext];
+            }else {
+                continue;
+            }
+            array[i] = element2;
+            array[iNext] = element1;
+
+        }
+
+        System.out.println("---------------------------------------\nArray ordenado:");
+
+        for(int i = 0; i < array.length; i++){
+            System.out.println(array[i]);
+        }
+
+        /*Volver luego */
+
+    }
+
+------------------------------------------------------
+
+Práctica 18: Crear un programa que introduzca 5 números y muestre cuáles son los dos 
+números más cercanos. Por ej. Si:
+14,11,2,10,17 => 11,10
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        int array[] = new int[5];
+
+        for(int i = 0; i < array.length; i++){
+            System.out.println("Introduce un numero");
+            int numero = sc.nextInt();
+
+            array[i] = numero;
+        }
+
+        int num1 = 0, num2 = 0;
+        int minDiff = Integer.MAX_VALUE;
+
+        for (int i = 0; i < array.length; i++) {
+            for (int j = i + 1; j < array.length; j++) {
+                int diff = Math.abs(array[i] - array[j]);
+                if (diff < minDiff) {
+                    minDiff = diff;
+                    num1 = array[i];
+                    num2 = array[j];
+                }
+            }
+        }
+
+        System.out.println("Los dos números más cercanos son: " + num1 + " y " + num2);
+
+        sc.close();
+
+    }
+
+---------------------------------------------------------
+
+Práctica 21: Crear un programa que reciba dos números del usuario. Si el primer número 
+no es un entero entre 1 y 100 lanzará una excepción que mostrará en pantalla “El número 
+debe ser un entero entre 1 y 100”
+
+ class NumeroFueraDeRangoException extends Exception {
+    public NumeroFueraDeRangoException(String mensaje) {
+        super(mensaje);
+    }
+}
+
+class Prueba {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        try {
+            System.out.println("Ingresa el primer numero:");
+            int num1 = sc.nextInt();
+
+            if (num1 < 1 || num1 > 100) {
+                throw new NumeroFueraDeRangoException("El número debe ser un entero entre 1 y 100");
+            }
+
+            System.out.println("Ingresa el segundo numero:");
+            int num2 = sc.nextInt();
+
+            System.out.println("Número 1: " + num1);
+            System.out.println("Número 2: " + num2);
+        } catch (NumeroFueraDeRangoException e) {
+
+            System.out.println(e.getMessage());
+        } finally {
+            sc.close();
+        }
+    }
+}
+
+---------------------------------------------------------
+
+
+
