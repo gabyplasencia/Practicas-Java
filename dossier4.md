@@ -126,3 +126,83 @@ Práctica 7: Define una clase Profesor con atributos: nombre (String), apellidos
 edad (int), soltero (boolean), especialista (boolean). Define un constructor que reciba los
 parámetros necesarios para la inicialización y otro constructor que no reciba parámetros.
 Crea los métodos getter y setter para poder establecer y obtener los valores de los atributos.
+
+class Profesor {
+    private String nombre;
+    private String apellidos;
+    private int edad;
+    private boolean soltero;
+
+    public Profesor(){
+    }
+
+    public Profesor(String nombre, String apellidos, int edad, boolean soltero) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.edad = edad;
+        this.soltero = soltero;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public boolean isSoltero() {
+        return soltero;
+    }
+
+    public void setSoltero(boolean soltero) {
+        this.soltero = soltero;
+    }
+
+}
+
+------------------------------------------------
+
+Práctica 8: Crear la clase Coche que tenga por atributos: String nombre, boolean
+encendido, boolean frenoDeManoPuesto, int posicion. Con un constructor que reciba el
+nombre: Coche(String n) y otro constructor que reciba el nombre y la posicion:
+Coche(String n, int p) Establecer los getter y los setter
+
+class Coche {
+    private String nombre;
+    private boolean encendido;
+    private boolean frenoDeMano;
+    private int posicion;
+    
+    public Coche(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Coche(String nombre, int posicion) {
+        this.nombre = nombre;
+        this.posicion = posicion;
+    }
+}
+
+---------------------------------------------------
+
+Práctica 10: Crear una clase llamada Cuenta que refleje una cuenta bancaria. Tiene por
+atributos: String numero, String titular, double saldo Así como los métodos ingresar() y
+retirar() que servirán para añadir o quitar saldo
+
