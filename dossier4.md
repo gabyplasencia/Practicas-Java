@@ -206,3 +206,120 @@ Práctica 10: Crear una clase llamada Cuenta que refleje una cuenta bancaria. Ti
 atributos: String numero, String titular, double saldo Así como los métodos ingresar() y
 retirar() que servirán para añadir o quitar saldo
 
+class Cuenta {
+    private String numero;
+    private String titular;
+    private double saldo;
+
+    public void ingresar(double dineroIngresado){
+        saldo += dineroIngresado;
+    }
+
+    public void retirar(double dineroRetirado){
+        saldo -= dineroRetirado;
+    }
+}
+
+-------------------------------------------------
+
+Práctica 11: Crear una clase llamada Cliente que emulará los gastos de un cliente de un
+hotel. Como atributos tendrá como mínimo: int id, String nombre, String apellido, int
+habitacion, double debe, int noches Como métodos como mínimo gastar(double) y
+pagar(double) que reflejan cuando el cliente consume y aumenta su deuda así como pagar
+parte de su cuenta. Tener en cuenta que como mínimo en el debe del cliente estará la cuantía
+de alquilar la habitación por el número de noches que esté. Cuando se establezca el número
+de la habitación también se deberá establecer el precio/noche de la habitación
+
+class Cliente {
+    private int id;
+    private String nombre;
+    private String apellido;
+    private int habitacion;
+    private double debe;
+    private int noches;
+    private double precioHabitacion;
+
+    public Cliente(int id, String nombre, String apellido, double precioHabitacion, int habitacion, int noches) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.habitacion = habitacion;
+        debe = precioHabitacion * noches;
+        this.noches = noches;
+    }
+
+    public void gastar(double gastoCliente){
+        debe += gastoCliente;
+    }
+
+    public void pagar(double pagoCliente){
+        debe -= pagoCliente;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public int getHabitacion() {
+        return habitacion;
+    }
+
+    public void setHabitacion(int habitacion) {
+        this.habitacion = habitacion;
+    }
+
+    public double getDebe() {
+        return debe;
+    }
+
+    public void setDebe(double debe) {
+        this.debe = debe;
+    }
+
+    public int getNoches() {
+        return noches;
+    }
+
+    public void setNoches(int noches) {
+        this.noches = noches;
+    }
+
+    public double getPrecioHabitacion() {
+        return precioHabitacion;
+    }
+
+    public void setPrecioHabitacion(double precioHabitacion) {
+        this.precioHabitacion = precioHabitacion;
+    }
+}
+
+------------------------------------------------
+
+Práctica 17: Crear una clase Factura que tenga como mínimo los atributos: double total,
+String detalle y los métodos agregar(String articuloConsumido, double precio) e imprimir()
+así como un constructor de copia
+agregar() permite añadir al String detalle el nombre del artículo que se ha consumido y el
+precio de ese artículo a la vez que añade al total el precio. 
+imprimir() devuelve un String que muestra los artículos consumidos y el precio de cada uno
+de ellos así como el total de la factura
+
