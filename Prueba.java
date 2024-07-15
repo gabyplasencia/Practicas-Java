@@ -1,16 +1,20 @@
-import java.util.Arrays;
-import java.util.Scanner;
 
 /**
-Práctica 17: Crear una clase Factura que tenga como mínimo los atributos: double total,
-String detalle y los métodos agregar(String articuloConsumido, double precio) e imprimir()
-así como un constructor de copia
-agregar() permite añadir al String detalle el nombre del artículo que se ha consumido y el
-precio de ese artículo a la vez que añade al total el precio. 
-imprimir() devuelve un String que muestra los artículos consumidos y el precio de cada uno
-de ellos así como el total de la factura
+Práctica 26: Crear la clase CocheAlquiler como mínimo con atributos: String matricula,
+marca, modelo; double precio; int numDias; boolean alquilado; y la fecha de alquiler
+reflejada en tres valores enteros: dd, mm, aa 
+Se deberá reflejar que hay una cantidad mínima de días de alquiler: 2 
+Un constructor como mínimo que reciba matricula, marca, modelo y precio. 
+Un método: double alquilar(int dias, int dd, int mm, int aa) que refleja la fecha de alquiler y
+el número de días del alquiler. En este método se deberá controlar si el coche ya está
+alquilado en cuyo caso devolverá -1. -2 si se intenta alquilar por menos días del mínimo
+establecido y el coste del alquiler en otro caso
+Un método: double devolver(int dias) que refleja que se ha devuelto el coche después de
+una cantidad de días. Este método devuelve -1 si el coche no está alquilado y la cantidad de
+sobrecoste que pudiera haber incurrido si sobrepasa los días de alquiler inicialmente
+establecidos
+Sobreescribir el método toString() que muestre los datos relevantes del alquiler
  */
-
 
 
 class Prueba {

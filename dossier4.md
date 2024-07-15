@@ -323,3 +323,96 @@ precio de ese artículo a la vez que añade al total el precio.
 imprimir() devuelve un String que muestra los artículos consumidos y el precio de cada uno
 de ellos así como el total de la factura
 
+class Factura {
+    private double total;
+    private String detalle;
+
+    public void agregar(String articuloConsumido, double precio) {
+        this.detalle += articuloConsumido + ": " + precio + "\n";
+        this.total += precio;
+    }
+
+    public String imprimir() {
+        return this.detalle + "Total: " + this.total;
+    }
+}
+
+------------------------------------------------
+
+Práctica 20: Crear una clase Reloj con atributos: int hora, int minuto, int segundo crear un
+constructor como mínimo con los 3 parámetros. Un constructor de copia, un método: String
+mostrar() que devolverá un texto con los datos del reloj en el formato: 
+hora:minuto:segundo. Por ejemplo: 20:17:00
+los metodos agregarMinutos(int), agregarHoras(int), agregarSegundos(int) que sumarán lo
+correspondiente al reloj. 
+Observar que cuando supere 60minutos, 60segundos se agrega en la siguiente unidad. 
+Sobrecargar los métodos agregarHoras(double) , agregarMinutos(double) que si tienen una
+parte decimal calcula el equivalente en la unidad correspondiente y lo agrega
+
+class Reloj {
+    private int hora;
+    private int minuto;
+    private int segundo;
+
+    public Reloj(int hora, int minuto, int segundo) {
+        this.hora = hora;
+        this.minuto = minuto;
+        this.segundo = segundo;
+        normalizarTiempo();
+    }
+
+    public Reloj(Reloj otro) {
+        this.hora = otro.hora;
+        this.minuto = otro.minuto;
+        this.segundo = otro.segundo;
+    }
+
+    public String mostrar() {
+        return String.format("%02d:%02d:%02d", hora, minuto, segundo);
+    }
+
+    public void agregarHoras(int horas) {
+        this.hora += horas;
+        normalizarTiempo();
+    }
+
+    public void agregarHoras(double horas) {
+        int horasEnteras = (int) horas;
+        double parteDecimal = horas - horasEnteras;
+        int minutosAdicionales = (int) (parteDecimal * 60);
+        agregarHoras(horasEnteras);
+        agregarMinutos(minutosAdicionales);
+    }
+
+    public void agregarMinutos(int minutos) {
+        this.minuto += minutos;
+        normalizarTiempo();
+    }
+
+    public void agregarMinutos(double minutos) {
+        int minutosEnteros = (int) minutos;
+        double parteDecimal = minutos - minutosEnteros;
+        int segundosAdicionales = (int) (parteDecimal * 60);
+        agregarMinutos(minutosEnteros);
+        agregarSegundos(segundosAdicionales);
+    }
+
+    public void agregarSegundos(int segundos) {
+        this.segundo += segundos;
+        normalizarTiempo();
+    }
+
+    private void normalizarTiempo() {
+        if (segundo >= 60) {
+            minuto += segundo / 60;
+            segundo = segundo % 60;
+        }
+        if (minuto >= 60) {
+            hora += minuto / 60;
+            minuto = minuto % 60;
+        }
+        if (hora >= 24) {
+            hora = hora % 24;
+        }
+    }
+}
