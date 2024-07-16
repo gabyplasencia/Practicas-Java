@@ -416,3 +416,90 @@ class Reloj {
         }
     }
 }
+
+-------------------------------------------------------
+
+Práctica 26: Crear la clase CocheAlquiler como mínimo con atributos: String matricula,
+marca, modelo; double precio; int numDias; boolean alquilado; y la fecha de alquiler
+reflejada en tres valores enteros: dd, mm, aa 
+Se deberá reflejar que hay una cantidad mínima de días de alquiler: 2 
+Un constructor como mínimo que reciba matricula, marca, modelo y precio. 
+Un método: double alquilar(int dias, int dd, int mm, int aa) que refleja la fecha de alquiler y
+el número de días del alquiler. En este método se deberá controlar si el coche ya está
+alquilado en cuyo caso devolverá -1. -2 si se intenta alquilar por menos días del mínimo
+establecido y el coste del alquiler en otro caso
+Un método: double devolver(int dias) que refleja que se ha devuelto el coche después de
+una cantidad de días. Este método devuelve -1 si el coche no está alquilado y la cantidad de
+sobrecoste que pudiera haber incurrido si sobrepasa los días de alquiler inicialmente
+establecidos
+Sobreescribir el método toString() que muestre los datos relevantes del alquiler
+
+class CocheAlquiler {
+    private String matricula;
+    private String marca;
+    private String modelo;
+    private double precio;
+    private int numDias;
+    private boolean alquilado;
+    private int dd;
+    private int mm;
+    private int aa;
+    private static final int MIN_DIAS_ALQUILER = 2;
+
+    // Constructor que recibe matricula, marca, modelo y precio
+    public CocheAlquiler(String matricula, String marca, String modelo, double precio) {
+        this.matricula = matricula;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.precio = precio;
+        this.alquilado = false;
+    }
+
+    // Método para alquilar el coche
+    public double alquilar(int dias, int dd, int mm, int aa) {
+        if (alquilado) {
+            return -1; // El coche ya está alquilado
+        }
+        if (dias < MIN_DIAS_ALQUILER) {
+            return -2; // Intento de alquilar por menos del mínimo de días
+        }
+
+        this.numDias = dias;
+        this.dd = dd;
+        this.mm = mm;
+        this.aa = aa;
+        this.alquilado = true;
+
+        return dias * precio; // Coste del alquiler
+    }
+
+    // Método para devolver el coche
+    public double devolver(int dias) {
+        if (!alquilado) {
+            return -1; // El coche no está alquilado
+        }
+
+        this.alquilado = false;
+
+        if (dias > numDias) {
+            int diasExtra = dias - numDias;
+            return diasExtra * precio; // Sobrecoste por días adicionales
+        }
+
+        return 0; // No hay sobrecoste
+    }
+
+    // Método toString para mostrar los datos relevantes del alquiler
+    @Override
+    public String toString() {
+        return "CocheAlquiler{" +
+                "matricula='" + matricula + '\'' +
+                ", marca='" + marca + '\'' +
+                ", modelo='" + modelo + '\'' +
+                ", precio=" + precio +
+                ", numDias=" + numDias +
+                ", alquilado=" + alquilado +
+                ", fecha de alquiler=" + dd + "/" + mm + "/" + aa +
+                '}';
+    }
+}
